@@ -1,0 +1,28 @@
+<div class="container">
+    <section class="col-lg-6 col-md-offset-3">
+        <input style="margin: 1%" class="form-control" #newtodo (keyup)="addTodo($event, newtodo)">
+        <table class="table table-striped" style="margin: 1%">
+            <tr *for="#item of todoService.list">
+                <td><input type="checkbox" (click)="toggleCheck(item)" [checked]="item.completed"></td>
+                <td>{{item.title}}</td>
+                <td>
+                    <span class="btn btn-danger btn-xs" style="cursor: pointer" (click)="removeTodo(item)">
+                        <i class="fa fa-trash-o fa-lg"></i> Delete
+                    </span>
+                </td>
+            </tr>
+        </table>
+
+        <div [hidden]="bulkCheckState">
+            <button class="btn btn-info btn-sm" (click)="toggleBulkCheck()"> Clear Checked</button>
+        </div>
+        <div [hidden]="!bulkCheckState">
+            Are you Sure?
+            <button class="btn btn-danger btn-sm" (click)="clearChecked()">Yes</button>
+            <button class="btn btn-default btn-sm" (click)="toggleBulkCheck()">No</button
+        </div>
+
+
+    </section>
+
+</div>
